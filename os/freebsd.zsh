@@ -13,3 +13,11 @@ function xsel-b() {
     fi
 }
 
+function svn-co-port() {
+    url="https://svn.FreeBSD.org/ports/head/$1"
+    cmd="svn co ${url}"
+    echo $cmd
+    eval $cmd
+}
+
+alias svn-diff-port="svn diff > ../`make -VPKGNAME`.diff"

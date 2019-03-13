@@ -192,3 +192,20 @@ function prepend-file-to() {
 #===============================
 alias npm-install-taobao='npm install --registry=https://registry.npm.taobao.org'
 
+##########
+# docker #
+##########
+
+function docker-clean() {
+    ids=$(docker ps -a -f exited=1 -q)
+    if [ ! -z "$ids" ]; then
+        printf "Remove aborted containers:\n$ids\n"
+        docker rm "$ids"
+    fi
+    ids=$(docker images -f dangling=true -q)
+    if [ ! -z "$ids" ]; then
+        printf "Remove dangling images:\n$ids\n"
+        docker rmi "$ids"
+    fi
+}
+

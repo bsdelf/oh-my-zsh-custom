@@ -200,12 +200,12 @@ function docker-clean() {
     ids=$(docker ps -a -f exited=1 -q | sort | uniq | paste -s -d" ")
     if [ ! -z "$ids" ]; then
         printf "Remove aborted containers:\n$ids\n"
-        docker rm "$ids"
+        docker rm $(printf "$ids")
     fi
     ids=$(docker images -f dangling=true -q | sort | uniq | paste -s -d" ")
     if [ ! -z "$ids" ]; then
         printf "Remove dangling images:\n$ids\n"
-        docker rmi "$ids"
+        docker rmi $(printf "$ids")
     fi
 }
 

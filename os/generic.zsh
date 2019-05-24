@@ -53,6 +53,8 @@ alias ls-dot='ls -tlcd .*'
 alias ls-ssh='ls -tl ~/.ssh'
 alias R='R --save'
 
+alias date-stamp='date +"%Y.%m.%d-%H:%M:%S"'
+
 function mkcd() {
     nocorrect mkdir -p "$1" && cd "$1"
 }

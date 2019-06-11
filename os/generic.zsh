@@ -202,7 +202,11 @@ alias npm-install-taobao='npm install --registry=https://registry.npm.taobao.org
 ##########
 
 function docker-clean() {
-    ids=$(docker ps -a -f exited=1 -q | sort | uniq | paste -s -d" ")
+    filter=""
+    for i in $(seq 2 127); do
+        filter="$filter -f exited=$i"
+    done
+    ids=$(docker ps -a $(printf "$filter") -q | sort | uniq | paste -s -d" ")
     if [ ! -z "$ids" ]; then
         printf "Remove aborted containers:\n$ids\n"
         docker rm $(printf "$ids")

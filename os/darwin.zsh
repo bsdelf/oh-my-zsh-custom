@@ -18,3 +18,4 @@ function paste-to-words() {
 
 alias cd-pbpaste='cd "`pbpaste`"'
 alias cd-include='cd /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include'
+alias cd-cloud-docs='cd "$HOME/Library/Mobile Documents/com~apple~CloudDocs"'

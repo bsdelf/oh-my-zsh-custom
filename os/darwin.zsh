@@ -12,5 +12,9 @@ function pbcopy-file() {
     pbcopy < $*
 }
 
+function paste-to-words() {
+    echo $(pbpaste) >> "$HOME/Library/Mobile Documents/com~apple~CloudDocs/words.txt"
+}
+
 alias cd-pbpaste='cd "`pbpaste`"'
 alias cd-include='cd /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include'

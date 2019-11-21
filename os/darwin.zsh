@@ -14,7 +14,7 @@ function pbcopy-file() {
 }
 
 function paste-to-words() {
-    echo $(pbpaste) >> "$CLOUD_DOCS_PATH/words.txt"
+    echo $(pbpaste) | tr '[:upper:]' '[:lower:]' >> "$CLOUD_DOCS_PATH/words.txt"
 }
 alias cat-words='cat $CLOUD_DOCS_PATH/words.txt'
 

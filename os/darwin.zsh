@@ -14,7 +14,12 @@ function pbcopy-file() {
 }
 
 function paste-to-words() {
-    echo $(pbpaste) | tr '[:upper:]' '[:lower:]' >> "$CLOUD_DOCS_PATH/words.txt"
+    word=$(echo -n $(pbpaste) | tr '[:upper:]' '[:lower:]')
+    if grep -q $word "$CLOUD_DOCS_PATH/words.txt"; then
+        printf 'word "%s" already exists\n' $word
+        return
+    fi
+    echo $word >> "$CLOUD_DOCS_PATH/words.txt"
     tail -n 3 "$CLOUD_DOCS_PATH/words.txt"
 }
 alias cat-words='cat $CLOUD_DOCS_PATH/words.txt'

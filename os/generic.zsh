@@ -58,6 +58,10 @@ alias date-stamp='date +"%Y.%m.%d-%H:%M:%S"'
 alias cal3='cal -A 1 -B 1'
 alias ncal3='ncal -A 1 -B 1 -M'
 
+function tolower {
+    tr '[:upper:]' '[:lower:]'
+}
+
 function mkcd() {
     nocorrect mkdir -p "$1" && cd "$1"
 }

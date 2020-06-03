@@ -206,12 +206,12 @@ function docker-clean() {
     for i in $(seq 1 255); do
         filter="$filter -f exited=$i"
     done
-    ids=$(docker ps -a $(printf "$filter") -q | sort | uniq | paste -s -d" ")
+    ids=$(docker ps -a $(printf "$filter") -q | sort | uniq | paste -s -d " " -)
     if [ ! -z "$ids" ]; then
         printf "Remove aborted containers:\n$ids\n"
         docker rm $(printf "$ids")
     fi
-    ids=$(docker images -f dangling=true -q | sort | uniq | paste -s -d" ")
+    ids=$(docker images -f dangling=true -q | sort | uniq | paste -s -d " " -)
     if [ ! -z "$ids" ]; then
         printf "Remove dangling images:\n$ids\n"
         docker rmi $(printf "$ids")

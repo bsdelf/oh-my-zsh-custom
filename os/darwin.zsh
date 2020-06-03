@@ -27,3 +27,7 @@ alias cat-words='cat $CLOUD_DOCS_PATH/words.txt'
 alias cd-pbpaste='cd "`pbpaste`"'
 alias cd-include='cd /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include'
 alias cd-cloud-docs='cd $CLOUD_DOCS_PATH'
+
+# move word by word
+bindkey "[D" backward-word
+bindkey "[C" forward-word

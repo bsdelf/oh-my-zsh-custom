@@ -222,3 +222,9 @@ function docker-clean() {
     fi
 }
 
+function docker-volume-purge() {
+    ids=$(docker volume ls -q)
+    if [ ! -z "$ids" ]; then
+        docker volume rm $(printf "$ids")
+    fi
+}

@@ -12,3 +12,6 @@ if [[ ! -d "$CACHE_HOME_FOLDER" ]]; then
     ln -s "$CACHE_TMP_FOLDER" "$CACHE_HOME_FOLDER"
 fi
 
+function open() {
+    xdg-open "$@" > /dev/null 2>&1
+}

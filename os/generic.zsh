@@ -206,15 +206,23 @@ alias npm-install-taobao='npm install --registry=https://registry.npm.taobao.org
 ##########
 
 function docker-clean() {
+    filter="-f status=created"
+    createdIds=$(docker ps -a $(printf "$filter") -q | sort | uniq | paste -s -d " " -)
+    if [ ! -z "$createdIds" ]; then
+        printf "Remove created containers:\n$createdIds\n"
+        docker rm $(printf "$createdIds")
+    fi
+
     filter=""
     for i in $(seq 1 255); do
         filter="$filter -f exited=$i"
     done
-    ids=$(docker ps -a $(printf "$filter") -q | sort | uniq | paste -s -d " " -)
-    if [ ! -z "$ids" ]; then
-        printf "Remove aborted containers:\n$ids\n"
-        docker rm $(printf "$ids")
+    exitedIds=$(docker ps -a $(printf "$filter") -q | sort | uniq | paste -s -d " " -)
+    if [ ! -z "$exitedIds" ]; then
+        printf "Remove aborted containers:\n$exitedIds\n"
+        docker rm $(printf "$exitedIds")
     fi
+
     ids=$(docker images -f dangling=true -q | sort | uniq | paste -s -d " " -)
     if [ ! -z "$ids" ]; then
         printf "Remove dangling images:\n$ids\n"

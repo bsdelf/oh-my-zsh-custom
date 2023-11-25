@@ -18,7 +18,7 @@ export LC_ALL="en_US.UTF-8"
 export PATH="$PATH:$HOME/.gem/ruby/2.3.0/bin/"
 export PATH="$PATH:$HOME/Library/Python/2.7/bin/"
 if type go > /dev/null; then
-    export PATH="$HOME/go/bin/:$PATH"
+    export PATH="$(go env GOPATH)/bin:$PATH"
 fi
 
 ######## pager ########

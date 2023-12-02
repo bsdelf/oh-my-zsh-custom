@@ -11,14 +11,33 @@ setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history 
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 
 ######## locale ########
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
+#export LANG="en_US.UTF-8"
+#export LC_ALL="en_US.UTF-8"
 
 ######## path ########
-export PATH="$PATH:$HOME/.gem/ruby/2.3.0/bin/"
-export PATH="$PATH:$HOME/Library/Python/2.7/bin/"
+#typeset -U PATH path
+export BUNDLE_PATH=$HOME/.bundles
+for bundle in $BUNDLE_PATH/*/; do
+    bundle=$(realpath $bundle)
+    if [ -d "$bundle/bin" ]; then
+        #export PATH="$bundle/bin:$PATH"
+        path+="$bundle/bin"
+        if [ -x "$bundle/bin/javac" ]; then
+            export JAVA_HOME="$bundle"
+        fi
+    else
+        #export PATH="$bundle:$PATH"
+        path+="$bundle"
+    fi
+done
+
 if type go > /dev/null; then
-    export PATH="$(go env GOPATH)/bin:$PATH"
+    export GOPATH=$BUNDLE_PATH/goroot
+    if [ ! -d "GOPATH" ]; then
+        mkdir -p "$GOPATH"
+    fi
+    #export PATH="$(go env GOPATH)/bin:$PATH"
+    path+="$(go env GOPATH)/bin"
 fi
 
 ######## pager ########

@@ -11,7 +11,8 @@ setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history 
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 
 ######## locale ########
-#export LANG="en_US.UTF-8"
+export LANG="en_US.UTF-8"
+export LC_TIME="en_GB.UTF-8"
 #export LC_ALL="en_US.UTF-8"
 
 ######## path ########

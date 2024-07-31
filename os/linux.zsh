@@ -15,3 +15,7 @@ fi
 function open() {
     xdg-open "$@" > /dev/null 2>&1
 }
+
+function watch-cpu-freq() {
+  watch -n2 "grep 'cpu MHz' /proc/cpuinfo | sort -k4 -n -r"
+}

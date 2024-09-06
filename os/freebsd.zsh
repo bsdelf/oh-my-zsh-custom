@@ -37,3 +37,5 @@ echo '$fg_bold[white]run-depends-list:$reset_color' && make run-depends-list | s
 echo '$fg_bold[red]missing:$reset_color' && make missing | sort"
 
 alias minstall="make install clean"
+
+OPEN_COMMAND=xdg-open

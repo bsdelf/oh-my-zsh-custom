@@ -31,3 +31,5 @@ alias cd-cloud-docs='cd $CLOUD_DOCS_PATH'
 # move word by word
 bindkey "[D" backward-word
 bindkey "[C" forward-word
+
+OPEN_COMMAND=open

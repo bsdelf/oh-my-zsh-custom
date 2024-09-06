@@ -19,3 +19,5 @@ function open() {
 function watch-cpu-freq() {
   watch -n2 "grep 'cpu MHz' /proc/cpuinfo | sort -k4 -n -r"
 }
+
+OPEN_COMMAND=xdg-open
